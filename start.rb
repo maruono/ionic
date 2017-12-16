@@ -1,4 +1,5 @@
 require 'slim'
+require "coffee-script"
 
 module Slim
     Engine.set_options disable_escape: true, use_html_safe: false
@@ -32,6 +33,7 @@ end
 class AA
     def initialize
         generate
+        generate_coffee
         start
 
     end
@@ -54,6 +56,21 @@ class AA
         @str.each do |name|
             #p ("#{name}")
             Slim::BB.new(name)
+        end
+        Dir::chdir("..")
+        Dir::chdir("..")
+    end
+    
+    def generate_coffee
+        Dir::chdir("./www")
+        Dir::chdir("./js")
+        #puts system("coffee -c test.coffee")
+        
+        
+        @str2 = Dir.glob(["*.coffee"])
+        @str2.each do |name|
+            p ("#{name}")
+            puts system("coffee -c -b #{name}")
         end
         Dir::chdir("..")
         Dir::chdir("..")
