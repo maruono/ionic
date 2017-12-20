@@ -16,3 +16,7 @@ end
 task :test do
    puts system("ruby test.rb") 
 end
+
+task :build do
+    puts system("monaca remote build android --build-type=debug")
+end

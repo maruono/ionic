@@ -3,11 +3,29 @@
 angular.module('starter.controllers', [])
 .controller('DashCtrl', ($scope) ->)
 
-.controller('TestCtrl',
-($scope) ->
-    $scope.alertnum = (test) ->
-      aa = new Click_coffee ("#btn12")
-      aa.story1()
+.controller('TestCtrl', ($scope) ->
+    strdisp = new Disp("str")
+    
+    num = localStorage.length
+    for i in [0...num]
+      strdisp.add(localStorage.getItem(i))
+    
+    $scope.save = () =>
+      input_word = document.getElementById("inputdesu").value
+      key = localStorage.length
+      localStorage.setItem key, input_word
+      
+      strdisp.delete()
+      num = localStorage.length
+      for i in [0...num]
+        strdisp.add(localStorage.getItem(i))
+      
+    $scope.read = () =>
+      strdisp.delete()
+      num = localStorage.length
+      for i in [0...num]
+        strdisp.add(localStorage.getItem(i))
+      
       
 )
 

@@ -1,5 +1,14 @@
+<script type="text/javascript" charset="utf-8" src="components/loader.js"></script>
 ion-view[view-title="Test.slim"]
   ion-content[padding]
     h1 ok
-    button.ion-button[on-tap="alertnum(test)"]
-      | ボタンですよ
+    input#inputdesu
+    button.ion-button[on-tap="save()"]
+      | save
+    button.ion-button[on-tap="read()"]
+      | read
+    #str
+    
+    .list
+      label[class="item item-input"]
+        input[type="text" placeholder="first name"]
