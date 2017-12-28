@@ -1,14 +1,12 @@
 <script type="text/javascript" charset="utf-8" src="components/loader.js"></script>
+
 ion-view[view-title="Test.slim"]
   ion-content[padding]
-    h1 ok
-    input#inputdesu
-    button.ion-button[on-tap="save()"]
-      | save
-    button.ion-button[on-tap="read()"]
-      | read
-    #str
-    
-    .list
+    h1 markdown
+    div[class="list list-inset"]
       label[class="item item-input"]
-        input[type="text" placeholder="first name"]
+        textarea#inputdesu[placeholder="input a memo"]
+    button.button[on-tap="save()"]
+      | save
+    fieldset
+      #str

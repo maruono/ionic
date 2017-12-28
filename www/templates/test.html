@@ -1,15 +1,13 @@
 <script type="text/javascript" charset="utf-8" src="components/loader.js"></script>
+
 <ion-view view-title="Test.slim">
 <ion-content padding="">
-<h1>ok</h1>
-<input id="inputdesu" />
-<button class="ion-button" on-tap="save()">
-save
-</button><button class="ion-button" on-tap="read()">
-read
-</button><div id="str">
-
-</div><div class="list">
+<h1>markdown</h1>
+<div class="list list-inset">
 <label class="item item-input">
-<input placeholder="first name" type="text" />
-</label></div></ion-content></ion-view>
+<textarea id="inputdesu" placeholder="input a memo">
+</textarea></label></div><button class="button" on-tap="save()">
+save
+</button><fieldset>
+<div id="str">
+</div></fieldset></ion-content></ion-view>

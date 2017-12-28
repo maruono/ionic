@@ -1,5 +1,9 @@
 ion-view[view-title="Account"]
   ion-content
-    ion-list
-    ion-toggle[ng-model="settings.enableFriends"]
-      | Enable Friends
+    h2 select your memo
+    .list
+    div[class="item item-input-inset"]
+      label[class="item-input-wrapper"]
+        input[type="text" placeholder="input memo title"]
+      button[class="button button-small"] add
+    #accountdisp

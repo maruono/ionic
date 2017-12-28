@@ -1,24 +1,25 @@
 ion-view view-title="Dashboard" 
   ion-content.padding
-    h2 Welcome to Ionic-slim
-    p
-      | This is the Ionic starter for tabs-based apps. For other starters and ready-made templates, check out the
-      | = succeed "." do
-      a href="http://market.ionic.io/starters" target="_blank"  Ionic Market
-      | To edit the content of each tab, edit the corresponding template file in
-      | = succeed "." do
-      | code www/templates/
-      | This template is
-      | code www/templates/tab-dash.html
-      | If you need help with your app, join the Ionic Community on the
-      | = succeed "." do
-      a href="http://forum.ionicframework.com" target="_blank"  Ionic Forum
-      | Make sure to
-      a href="http://twitter.com/ionicframework" target="_blank"  follow us
-      | on Twitter to get important updates and announcements for Ionic developers.
-      | For help sending push notifications, join the
-      a href="https://apps.ionic.io/signup" target="_blank"  Ionic Platform
-      | and check out
-      | = succeed "." do
-      a href="http://docs.ionic.io/docs/push-overview" target="_blank"  Ionic Push
-      | We also have other services available.
+    h2 select your memo
+    #target[on-tap="getradio()"]
+      ion-list
+        ion-radio[name="hoge" ng-model="choice" ng-value="'0'"]value = 0
+        ion-radio[name="hoge" ng-model="choice" ng-value="'1'"]value = 1
+        ion-radio[name="hoge" ng-model="choice" ng-value="'thomson'"]value = thomson
+    button[class="button button-full button-positive" on-tap="setradio()"] set a radio
+      
+    button.button[on-tap="plus()"]
+      | plus
+    button.button[on-tap="minus()"]
+      | minus
+    
+    div[class="list list-inset"]
+      label[class="item item-input"]
+        input#key[type="text" placeholder="key"]
+      label[class="item item-input"]
+        input#value[type="text" placeholder="value"]
+      label[class="item"]
+        button.button[on-tap="change()"]
+          | change
+          
+    button#btn12[class="button"] button12
