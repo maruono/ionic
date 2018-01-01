@@ -5,8 +5,12 @@ ion-view[view-title="Test.slim"]
     h1 markdown
     div[class="list list-inset"]
       label[class="item item-input"]
-        textarea#inputdesu[placeholder="input a memo"]
-    button.button[on-tap="save()"]
-      | save
-    fieldset
-      #str
+        input#titled[type="text" placeholder="title"]
+      label[class="item item-input"]
+        textarea#memosd[placeholder="input a memo"]
+      label[class="item"]
+        button#butcreate[class="button"]
+          | save
+    
+
+

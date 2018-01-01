@@ -1,6 +1,16 @@
 ion-view view-title="Dashboard" 
   ion-content.padding
     h2 select your memo
+    
+    div[class="list list-inset"]
+      label[class="item item-input"]
+        input#titled[type="text" placeholder="title"]
+      label[class="item item-input"]
+        input#memosd[type="text" placeholder="memo"]
+      label[class="item"]
+        button#butcreate[class="button"]
+          | save
+    
     #target[on-tap="getradio()"]
       ion-list
         ion-radio[name="hoge" ng-model="choice" ng-value="'0'"]value = 0

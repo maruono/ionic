@@ -147,7 +147,9 @@ class Add_radio
       key = localStorage.getItem("memo_num")
       num = parseInt(key, 10)
       for i in [1..num]
-        this.add(i ,localStorage.getItem(i))
+        story1_1 = localStorage.getItem(i)
+        story1_2 = JSON.parse(story1_1)
+        this.add(i ,story1_2.title)
   
   story2: ->
     $("#"+"#{@div}").click =>
@@ -172,21 +174,25 @@ class Select_memo_disp
     
 #############################
 class Add_title
-  constructor:(@input, @add_button)->
+  constructor:(@input)->
     @cpm = new Cpm("memo_num")
-    $("##{@add_button}").click =>
-      console.log "add title"
-      @const = document.getElementById(@input).value
-      console.log @const
+  story2: ->
+    console.log "add title"
+    @json_title_memo = JSON.stringify({
+      title: @test1
+      memo: @test2
+    })
   
   #あまりセンスがない書き方してるので気を付けるべし
   story1: ->
     @cpm.plus()
-    console.log "story1"
     key = localStorage.getItem("memo_num")
     console.log num = parseInt(key, 10)
-    @title = document.getElementById(@input).value
-    localStorage.setItem num, @title
+    @test1 = document.getElementById(@input).value
+    
+    this.story2()
+    
+    localStorage.setItem num, @json_title_memo
     
     new Disp("accountdisp").delete()
     addradio = new Add_radio("accountdisp", "betu")
@@ -204,13 +210,39 @@ class Delete_button
 class Edit_memo
   constructor:->
     console.log "constructor"
-    @test1 = document.getElementById("inputdesu").value
     @test2 = localStorage.getItem("getradio")
     @test3 = localStorage.getItem(@test2)
-    document.getElementById("inputdesu").value = @test3
+    @test4 = JSON.parse(@test3)
+    @title = @test4.title
+    @memo = @test4.memo
+    
+    document.getElementById("titled").value = @title
+    document.getElementById("memosd").value = @memo
   save: ->
     console.log "story1"
-    @test4 = document.getElementById("inputdesu").value
-    @test5 = localStorage.getItem("getradio")
-    localStorage.setItem @test5, @test4
+    @save1 = document.getElementById("titled").value
+    @save2 = document.getElementById("memosd").value
+    json_title_memo = JSON.stringify({
+      title: @save1
+      memo: @save2
+    })
+    @save5 = localStorage.getItem("getradio")
+    localStorage.setItem @save5, json_title_memo
+
+##################
+class Title_and_memo
+  constructor:->
+    console.log "new Title_and_memo"
+  save:->
+    console.log "save Title_and_memo"
+    @test1 = document.getElementById("titled").value
+    @test2 = document.getElementById("memosd").value
     
+    json_title_memo = JSON.stringify({
+      title: @test1
+      memo: @test2
+    })
+    console.log json_title_memo
+    obj = JSON.parse(json_title_memo)
+    console.log obj.title
+    console.log obj.memo

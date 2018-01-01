@@ -4,9 +4,12 @@ angular.module('starter.controllers', [])
 .controller('DashCtrl', ($scope) ->
   cpm = new Cpm("memumu")
   sele = new Select_strage("key", "value")
+  title_and_memo = new Title_and_memo()
   
+  $("#butcreate").click =>
+    title_and_memo.save()
   $scope.$on '$ionicView.enter', (event, data) ->
-    alert "入場時自動起動"
+    console.log "入場時自動起動"
   
   doAfter = ->
     radionum = localStorage.getItem("getradio")
@@ -31,16 +34,16 @@ angular.module('starter.controllers', [])
 )
 
 .controller('TestCtrl', ($scope) ->
-  cpm_tom = new Cpm_tom()
+  #cpm_tom = new Cpm_tom()
   edit_memo = new Edit_memo()
+  
+  $("#butcreate").click =>
+    #title_and_memo.save()
+    edit_memo.save()
+    
   $scope.$on '$ionicView.enter', (event, data) ->
     edit_memo = new Edit_memo()
 
-  $scope.save = () =>
-    #マークダウンバージョン
-    #cpm_tom.save("inputdesu")
-    
-    edit_memo.save()
       
       
 )

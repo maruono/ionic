@@ -1,7 +1,17 @@
 <ion-view view-title="Dashboard">
 <ion-content class="padding">
-<h2>select your memo</h2>
-<div id="target" on-tap="getradio()">
+<h2>select your memo
+</h2>
+<div class="list list-inset">
+<label class="item item-input">
+<input id="titled" placeholder="title" type="text" />
+</label><label class="item item-input">
+<input id="memosd" placeholder="memo" type="text" />
+</label><label class="item">
+<button class="button" id="butcreate">
+save
+
+</button></label></div><div id="target" on-tap="getradio()">
 <ion-list>
 <ion-radio name="hoge" ng-model="choice" ng-value="'0'">value = 0</ion-radio>
 <ion-radio name="hoge" ng-model="choice" ng-value="'1'">value = 1</ion-radio>
