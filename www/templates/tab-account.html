@@ -4,7 +4,15 @@
 <div class="list">
 </div><div class="item item-input-inset">
 <label class="item-input-wrapper">
-<input placeholder="input memo title" type="text" />
-</label><button class="button button-small">add</button>
+<input id="input_title" placeholder="input memo title" type="text" />
+</label><button class="button button-small" id="add_title">add</button>
 </div><div id="accountdisp">
-</div></ion-content></ion-view>
+
+
+</div><ion-toggle ng-model="shouldShowDelete">
+Show Delete?
+</ion-toggle><ion-list show-delete="shouldShowDelete">
+<ion-item>
+<ion-delete-button class="ion-minus-circled" id="delete">
+</ion-delete-button>Hello, list item!
+</ion-item></ion-list></ion-content></ion-view>

@@ -4,6 +4,14 @@ ion-view[view-title="Account"]
     .list
     div[class="item item-input-inset"]
       label[class="item-input-wrapper"]
-        input[type="text" placeholder="input memo title"]
-      button[class="button button-small"] add
+        input#input_title[type="text" placeholder="input memo title"]
+      button#add_title[class="button button-small"] add
     #accountdisp
+    
+    
+    ion-toggle[ng-model="shouldShowDelete"]
+      | Show Delete?
+    ion-list[show-delete="shouldShowDelete"]
+      ion-item
+        ion-delete-button#delete[class="ion-minus-circled"]
+        | Hello, list item!
