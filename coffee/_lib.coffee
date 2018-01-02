@@ -171,6 +171,18 @@ class Select_memo_disp
     @value = localStorage.getItem("getradio")
     @value2 = localStorage.getItem(@value)
     @disp.disp(@value2)
+  title_memo_disp: ->
+    @disp = new Disp(@div)
+    @value = localStorage.getItem("getradio")
+    @value2 = localStorage.getItem(@value)
+    @value3 = JSON.parse(@value2)
+    @disp.disp(@value3.title)
+    
+    @converter = new showdown.Converter()
+    @mark2html = @converter.makeHtml(@value3.memo)
+    
+    @disp.add(@mark2html)
+    
     
 #############################
 class Add_title
@@ -246,3 +258,23 @@ class Title_and_memo
     obj = JSON.parse(json_title_memo)
     console.log obj.title
     console.log obj.memo
+
+#########################
+class Area_auto_size
+  constructor:(@id) ->
+      console.log "Area_auto_size"
+      console.log @target_id  = "##{@id}"
+      $(@target_id).height 30
+      $(@target_id).css 'lineHeight', '20px'
+      $(@target_id).on 'input', (evt) ->
+        if evt.target.scrollHeight > evt.target.offsetHeight
+          $(evt.target).height evt.target.scrollHeight
+        else
+          lineHeight = Number($(evt.target).css('lineHeight').split('px')[0])
+          loop
+            $(evt.target).height $(evt.target).height() - lineHeight
+            if evt.target.scrollHeight > evt.target.offsetHeight
+              $(evt.target).height evt.target.scrollHeight
+              break
+        return
+###########################

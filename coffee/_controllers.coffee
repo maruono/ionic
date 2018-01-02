@@ -15,30 +15,21 @@ angular.module('starter.controllers', [])
     radionum = localStorage.getItem("getradio")
     $("input[name=hoge]").val [radionum]
   setTimeout(doAfter, 100)
-  
-  $scope.plus = () =>
-    cpm.plus()
-  
-  $scope.minus = () =>
-    cpm.minus()
+
     
-  $scope.change = () =>
-    sele.story2()
-    #alert 1
-    
-  $scope.getradio = =>
-    @value = $('input[name=hoge]:checked').val()
-    @key = "getradio"
-    localStorage.setItem @key, @value
-    
+
 )
 
 .controller('TestCtrl', ($scope) ->
   #cpm_tom = new Cpm_tom()
   edit_memo = new Edit_memo()
+  $('#memosd').css
+    "resize": "none"
+  area_auto_size = new Area_auto_size("memosd")
+
   
-  $("#butcreate").click =>
-    #title_and_memo.save()
+  $("#memosd").keyup ->
+    console.log "keyup"
     edit_memo.save()
     
   $scope.$on '$ionicView.enter', (event, data) ->
@@ -50,7 +41,9 @@ angular.module('starter.controllers', [])
 
 .controller('ChatsCtrl', ($scope) ->
   $scope.$on '$ionicView.enter', (event, data) ->
-    new Select_memo_disp("str33")
+    select_memo_disp = new Select_memo_disp("str33")
+    select_memo_disp.title_memo_disp()
+    
     
   
 )
