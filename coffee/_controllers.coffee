@@ -28,6 +28,19 @@ angular.module('starter.controllers', [])
 .controller('TestCtrl', ($scope) ->
   #cpm_tom = new Cpm_tom()
   edit_memo = new Edit_memo()
+  
+  $("#insert_h2").click =>
+    new Insert_caret("memosd", "##")
+  
+  $("#insert_yoko").click =>
+    new Insert_caret("memosd", "---")
+    
+  $("#insert_list").click =>
+    new Insert_caret("memosd", "- ")
+    
+  $("#insert_hutoi").click =>
+    new Insert_caret("memosd", "- ")
+  
   $('#memosd').css
     "resize": "none"
   area_auto_size = new Area_auto_size("memosd")

@@ -193,6 +193,16 @@ class Select_memo_disp
     @converter = new showdown.Converter()
     @mark2html = @converter.makeHtml(@value3.memo)
     
+    console.log "###########"
+    console.log @mark2html
+    console.log "###########"
+    @mark2html = @mark2html.replace("<ul>", "")
+    @mark2html = @mark2html.replace("</ul>", "")
+    @mark2html = @mark2html.replace("<ol>", "")
+    @mark2html = @mark2html.replace("</ol>", "")
+    console.log @mark2html
+    console.log "###########"
+    
     @disp.disp(@mark2html)
     
     
@@ -229,6 +239,14 @@ class Add_title
 class Delete_button
   constructor:->
     console.log "delete ok"
+    @key = localStorage.getItem("getradio")
+    localStorage.removeItem(@key)
+    new Disp("accountdisp").delete()
+    addradio = new Add_radio("accountdisp", "betu")
+    addradio.story1()
+    addradio.story2()
+    addradio.story3()
+    
       
 #################
 class Edit_memo
@@ -236,12 +254,16 @@ class Edit_memo
     console.log "constructor"
     @test2 = localStorage.getItem("getradio")
     @test3 = localStorage.getItem(@test2)
-    @test4 = JSON.parse(@test3)
-    @title = @test4.title
-    @memo = @test4.memo
-    
-    document.getElementById("titled").value = @title
-    document.getElementById("memosd").value = @memo
+    if @test3 == null
+      console.log "null"
+      alert "select your memo"
+    else
+      @test4 = JSON.parse(@test3)
+      @title = @test4.title
+      @memo = @test4.memo
+      
+      document.getElementById("titled").value = @title
+      document.getElementById("memosd").value = @memo
   save: ->
     console.log "story1"
     @save1 = document.getElementById("titled").value
@@ -251,7 +273,10 @@ class Edit_memo
       memo: @save2
     })
     @save5 = localStorage.getItem("getradio")
-    localStorage.setItem @save5, json_title_memo
+    if @test3 == null
+      console.log "null"
+    else
+      localStorage.setItem @save5, json_title_memo
 
 ##################
 class Title_and_memo
@@ -296,3 +321,21 @@ class Delete_strage
     @const1 = document.getElementById(@delkey).value
     console.log @const1
     localStorage.removeItem(@const1)
+    
+    
+########################
+class Insert_caret
+  constructor:(@target, @str) ->
+    obj = $("##{@target}")
+    obj.focus()
+    if navigator.userAgent.match(/MSIE/)
+      r = document.selection.createRange()
+      r.text = @str
+      r.select()
+    else
+      s = obj.val()
+      p = obj.get(0).selectionStart
+      np = p + @str.length
+      obj.val s.substr(0, p) + @str + s.substr(p)
+      obj.get(0).setSelectionRange np, np
+    return
