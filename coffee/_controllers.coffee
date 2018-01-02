@@ -6,6 +6,11 @@ angular.module('starter.controllers', [])
   sele = new Select_strage("key", "value")
   title_and_memo = new Title_and_memo()
   
+  $("#delbut").click =>
+    new Delete_strage("delkey")
+  
+  
+  
   $("#butcreate").click =>
     title_and_memo.save()
   $scope.$on '$ionicView.enter', (event, data) ->

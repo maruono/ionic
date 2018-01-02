@@ -148,8 +148,18 @@ class Add_radio
       num = parseInt(key, 10)
       for i in [1..num]
         story1_1 = localStorage.getItem(i)
-        story1_2 = JSON.parse(story1_1)
-        this.add(i ,story1_2.title)
+        
+        console.log "########"
+        console.log story1_1 = localStorage.getItem(i)
+        if story1_1 == null
+          console.log "nullなんです"
+        else
+          console.log "nullではないんです"
+          story1_2 = JSON.parse(story1_1)
+          this.add(i ,story1_2.title)
+        console.log "########"
+        
+        
   
   story2: ->
     $("#"+"#{@div}").click =>
@@ -176,12 +186,14 @@ class Select_memo_disp
     @value = localStorage.getItem("getradio")
     @value2 = localStorage.getItem(@value)
     @value3 = JSON.parse(@value2)
-    @disp.disp(@value3.title)
+    
+    @disp2 = new Disp("strtitle")
+    @disp2.disp("<h1>#{@value3.title}</h1>")
     
     @converter = new showdown.Converter()
     @mark2html = @converter.makeHtml(@value3.memo)
     
-    @disp.add(@mark2html)
+    @disp.disp(@mark2html)
     
     
 #############################
@@ -278,3 +290,9 @@ class Area_auto_size
               break
         return
 ###########################
+class Delete_strage
+  constructor:(@delkey) ->
+    console.log @delkey
+    @const1 = document.getElementById(@delkey).value
+    console.log @const1
+    localStorage.removeItem(@const1)

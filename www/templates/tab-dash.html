@@ -2,7 +2,14 @@
 <ion-content class="padding">
 <h2>select your memo
 </h2>
-<div id="target" on-tap="getradio()">
+<div class="list list-inset">
+<label class="item item-input">
+<input id="delkey" placeholder="key" type="text" />
+</label><label class="item">
+<button class="button" id="delbut">
+delete
+
+</button></label></div><div id="target" on-tap="getradio()">
 <ion-list>
 <ion-radio name="hoge" ng-model="choice" ng-value="'0'">value = 0</ion-radio>
 <ion-radio name="hoge" ng-model="choice" ng-value="'1'">value = 1</ion-radio>
@@ -14,14 +21,7 @@ plus
 </button><button class="button" on-tap="minus()">
 minus
 
-</button><div class="list list-inset">
-<label class="item item-input">
-<input id="key" placeholder="key" type="text" />
-</label><label class="item item-input">
-<input id="value" placeholder="value" type="text" />
-</label><label class="item">
-<button class="button" on-tap="change()">
-change
 
-</button></label></div><button class="button" id="btn12">button12</button>
+
+</button><button class="button" id="btn12">button12</button>
 </ion-content></ion-view>

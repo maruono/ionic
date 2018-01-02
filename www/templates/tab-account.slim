@@ -1,17 +1,12 @@
+div[class="bar bar-header bar-light"]
+  h1[class="title"]bar-light
+  button[class="button"]Edit
+
 ion-view[view-title="Account"]
   ion-content
-    h2 select your memo
     .list
-    div[class="item item-input-inset"]
-      label[class="item-input-wrapper"]
-        input#input_title[type="text" placeholder="input memo title"]
-      button#add_title[class="button button-small"] add
-    #accountdisp
-    
-    
-    ion-toggle[ng-model="shouldShowDelete"]
-      | Show Delete?
-    ion-list[show-delete="shouldShowDelete"]
-      ion-item
-        ion-delete-button#delete[class="ion-minus-circled"]
-        | Hello, list item!
+      div[class="item item-input-inset"]
+        label[class="item-input-wrapper"]
+          input#input_title[type="text" placeholder="input memo title"]
+        button#add_title[class="button button-small"] add
+      #accountdisp
